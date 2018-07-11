@@ -28,21 +28,21 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_start_clicked()
 {
     if (pDnsProxy == NULL) {
         pDnsProxy = new DnsProxy(ui->comboBox_to_server->currentText(), ui->comboBox_as_server->currentText(), ui->lineEdit_master_dns_ip->text(), this);
         connect(pDnsProxy, SIGNAL(errorMessage(QString)), this, SLOT(slotOnDebugMessage(QString)));
         connect(pDnsProxy, SIGNAL(warningMessage(QString)), this, SLOT(slotOnDebugMessage(QString)));
         connect(pDnsProxy, SIGNAL(infoMessage(QString)), this, SLOT(slotOnDebugMessage(QString)));
-        ui->pushButton->setText("Stop DNS Server");
+        ui->pushButton_start->setText("Stop DNS Server");
         pDnsProxy->start();
     } else {
         pDnsProxy->stop();
         pDnsProxy->disconnect();
         delete pDnsProxy;
         pDnsProxy = NULL;
-        ui->pushButton->setText("Start DNS Server");
+        ui->pushButton_start->setText("Start DNS Server");
     }
 }
 

@@ -23,7 +23,7 @@ public slots:
     void slotOnDebugMessage(QString msg);
 
 private slots:
-    void on_pushButton_clicked(); // Start
+    void on_pushButton_start_clicked(); // Start
 
     void on_pushButton_refresh_clicked();
 
